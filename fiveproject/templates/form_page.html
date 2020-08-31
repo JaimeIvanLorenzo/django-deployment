@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block css_area %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock css_area %}
+
+{% block title %}
+Form page
+{% endblock title %}
+
+{% block content %}
+<div class="jumbotron">
+    {% if registered %}
+        <h1>Thank you for registering</h1>
+    {% else %}
+        <h1>Register here</h1>
+        <h3>Fill out form</h3>
+
+        <form enctype='multipart/form-data' action="" method="post">
+            {% csrf_token %}
+            {{user_form.as_p}}
+            {{profile_form.as_p}}
+            <input type="submit" value="Register" class="btn btn-primary">
+        </form>
+    {% endif %}
+</div>
+{% endblock content %}
